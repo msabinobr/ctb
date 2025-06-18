@@ -34,3 +34,24 @@ document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
         // You can add Google Analytics or Facebook Pixel tracking here
     });
 });
+
+// FAQ Accordion
+
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        // Fecha todos os outros
+        document.querySelectorAll('.faq-question').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelectorAll('.faq-answer').forEach(ans => {
+            ans.hidden = true;
+        });
+        // Abre o selecionado se não estava aberto
+        if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            const answer = document.getElementById(this.getAttribute('aria-controls'));
+            if (answer) answer.hidden = false;
+        }
+    });
+});
