@@ -2,6 +2,11 @@
 
 Landing page moderna e responsiva para a Conexão Terra Bambu, empresa especializada em bioconstrução e sustentabilidade.
 
+## Acesse os modelos online
+
+- [Modelo 1 (index.html)](https://msabinobr.github.io/ctb/)
+- [Modelo 2 (modelo2.html)](https://msabinobr.github.io/ctb/modelo2.html)
+
 ## Características
 
 - Design moderno e responsivo
