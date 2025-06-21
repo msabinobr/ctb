@@ -51,7 +51,7 @@ body {
     font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--text-dark);
-    overflow-x: hidden;
+    /* overflow-x: hidden; foi removido. É melhor encontrar e corrigir o elemento que causa o overflow horizontal do que escondê-lo. Se o problema persistir, esta linha pode ser reativada temporariamente. */
 }
 
 .container {
@@ -274,13 +274,16 @@ body {
 }
 
 .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex; /* Alterado de grid para flex */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os itens quando eles quebram */
     gap: 2rem;
     margin-top: 3rem;
 }
 
 .benefit-card {
+    flex: 1 1 300px; /* flex-grow, flex-shrink, flex-basis: tamanho base de 300px */
+    max-width: 350px; /* Largura máxima para os cards em telas maiores, para não esticarem demais */
     background: var(--white);
     padding: 2rem;
     border-radius: var(--border-radius);
@@ -334,7 +337,8 @@ body {
 
 
 .specialty-card {
-    flex: 0 1 350px; /* Define a base para o flexbox, permitindo encolher mas não crescer */
+    flex: 1 1 350px; /* Permite que o card cresça e encolha, com base de 350px */
+    max-width: 400px; /* Evita que os cards fiquem excessivamente largos em telas de tablet */
     background: var(--white);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -574,6 +578,11 @@ body {
 /* Mobile - 768px e abaixo */
 @media (max-width: 768px) {
     /* Header & Nav */
+    /* Seção de Especialidades no mobile: */
+    .specialties .container {
+        padding: 0 15px; /* Reduz o padding do container para os cards terem mais espaço */
+    }
+
     .header .container {
         position: relative; /* Para o z-index do toggle funcionar corretamente */
     }
@@ -651,8 +660,18 @@ body {
     }
 
     /* Grids */
+    /* Ajustes específicos para a Seção de Soluções no mobile */
+    .solutions .container {
+        padding: 0 15px; /* Reduz o padding horizontal para dar mais largura aos cards */
+    }
     .benefits-grid {
-        grid-template-columns: 1fr;
+        /* Não é mais necessário grid-template-columns: 1fr; pois agora é flex e quebra automaticamente */
+    }
+    .benefit-card {
+        max-width: none; /* Permite que os cards ocupem toda a largura disponível no mobile */
+    }
+    .specialty-card {
+        max-width: none; /* Permite que os cards de especialidade também ocupem toda a largura */
     }
     
     .consultoria-content {
@@ -715,6 +734,13 @@ body {
     .hero-subtitle {
         font-size: 1.1rem;
         line-height: 1.4;
+    }
+    /* Ajustes específicos para a Seção de Soluções em mobile muito pequeno */
+    .solutions .container {
+        padding: 0 10px; /* Ainda menos padding para telas muito pequenas */
+    }
+    .specialties .container {
+        padding: 0 10px; /* E também para a seção de especialidades */
     }
     .imagine-banner-content h2 {
         font-size: 1.5rem;
