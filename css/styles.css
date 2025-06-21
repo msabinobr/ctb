@@ -482,7 +482,7 @@ body {
 
 @media (max-width: 768px) {
     .imagine-banner {
-        min-height: 240px; /* Aumentado para melhor centralização vertical no mobile */
+        min-height: 300px; /* Altura aumentada para melhor centralização no mobile */
     }
     .imagine-banner-content {
         /* Padding vertical removido para permitir que o flexbox do pai centralize o conteúdo perfeitamente */
