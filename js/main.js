@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     
-    // Observe cards for animation (benefit-card, specialty-card)
-    const elementsToAnimate = document.querySelectorAll('.benefit-card, .specialty-card, .animated-divider');
+    // Observe elements for animation
+    const elementsToAnimate = document.querySelectorAll('.benefit-card, .specialty-card, .animated-item');
     elementsToAnimate.forEach(card => {
         observer.observe(card);
     });
