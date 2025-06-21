@@ -226,7 +226,8 @@ body {
     align-items: center;
     gap: 0.5rem;
     background: var(--accent-color);
-    color: var(--text-on-primary-bg);
+    color: var(--text-on-primary-bg); /* Alterado para branco, conforme solicitado */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); /* Sombra sutil para melhorar a legibilidade do branco no verde */
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 50px; /* Mantido pois é um estilo específico do botão */
@@ -425,12 +426,6 @@ body {
 
 .consultoria-text .cta-button {
     margin-top: 1.5rem; /* Adds space between the list and the button */
-    background-color: var(--primary-color); /* Differentiates from the main green CTA */
-    box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
-}
-
-.consultoria-text .cta-button:hover, .consultoria-text .cta-button:focus-visible {
-    background-color: var(--primary-dark-color);
 }
 
 .consultoria-image {
