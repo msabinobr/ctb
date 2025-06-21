@@ -515,6 +515,14 @@ body {
         display: flex;
     }
 
+    .logo .logo-emblem {
+        height: 50px; /* Reduz o emblema no mobile */
+    }
+
+    .logo .logo-text {
+        height: 25px; /* Reduz o texto do logo no mobile */
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
