@@ -34,6 +34,19 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Melhora de acessibilidade: Respeita a preferência do usuário por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
     font-family: var(--font-primary);
     line-height: 1.6;
@@ -187,8 +200,9 @@ body {
 
 .hero-content {
     z-index: 1;
-    max-width: 800px;
-    padding: 0 20px;
+    /* A largura e o padding agora são controlados pelo .container interno,
+       evitando regras duplicadas e simplificando o layout. */
+    width: 100%;
 }
 
 .hero-title {
@@ -308,9 +322,6 @@ body {
 /* Specialties Section */
 .specialties {
     padding: 5rem 0;
-}
-.specialties > .container { /* Estilos aplicados diretamente ao container */
-    padding: 0 20px; /* Espaçamento interno horizontal */
 }
 
 .specialties-grid {
@@ -480,46 +491,6 @@ body {
     margin-top: 2rem;
 }
 
-@media (max-width: 768px) {
-    .imagine-banner {
-        min-height: 300px; /* Altura aumentada para melhor centralização no mobile */
-    }
-    .imagine-banner-content {
-        /* Padding vertical removido para permitir que o flexbox do pai centralize o conteúdo perfeitamente */
-        padding: 0 1rem; 
-    }
-    .imagine-banner-content h2 {
-        font-size: 1.25rem;
-        line-height: 1.3;
-    }
-    .imagine-banner-content p {
-        font-size: 1.05rem;
-        line-height: 1.5;
-    }
-    .hero-title {
-        font-size: 1.35rem;
-        line-height: 1.25;
-    }
-    .hero-subtitle {
-        font-size: 1rem;
-        line-height: 1.4;
-    }
-}
-@media (max-width: 480px) {
-    .imagine-banner-content h2 {
-        font-size: 1.05rem;
-    }
-    .imagine-banner-content p {
-        font-size: 0.95rem;
-    }
-    .hero-title {
-        font-size: 1.05rem;
-    }
-    .hero-subtitle {
-        font-size: 0.92rem;
-    }
-}
-
 /* Final CTA Section */
 .final-cta {
     padding: 5rem 0;
@@ -533,15 +504,6 @@ body {
     font-weight: 600;
     margin-bottom: 1rem;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.final-cta > .container > p { /* Target the first paragraph directly */
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    opacity: 0.9;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .final-cta .cta-box {
@@ -589,8 +551,29 @@ body {
     color: #999;
 }
 
-/* Responsive Design */
+/* =============================================== */
+/* Responsive Design (Consolidado e Organizado) */
+/* =============================================== */
+
+/* Tablet - 992px e abaixo */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .consultoria-content {
+        gap: 2rem;
+    }
+}
+
+/* Mobile - 768px e abaixo */
 @media (max-width: 768px) {
+    /* Header & Nav */
     .header .container {
         position: relative; /* Para o z-index do toggle funcionar corretamente */
     }
@@ -633,11 +616,10 @@ body {
     
     .mobile-menu-toggle {
         display: flex;
-        position: fixed; /* Fixa o botão para não se mover com o menu */
-        top: 25px; /* Ajuste fino da posição vertical */
-        right: 20px; /* Alinha com o padding do container */
-        transform: translateY(-50%);
-        top: calc(var(--header-height) / 2);
+        /* position: absolute; garante que o botão role junto com o header,
+           em vez de ficar fixo na tela. */
+        position: absolute;
+        right: 20px;
     }
 
     .logo .logo-emblem {
@@ -648,6 +630,7 @@ body {
         height: 14px; /* Altura reduzida para mobile */
     }
 
+    /* Hero */
     .hero-title {
         font-size: 2.5rem;
     }
@@ -656,15 +639,18 @@ body {
         font-size: 1.2rem;
     }
     
+    /* Botão CTA Geral */
     .cta-button {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
 
+    /* Títulos de Seção */
     .section-title {
         font-size: 2rem;
     }
 
+    /* Grids */
     .benefits-grid {
         grid-template-columns: 1fr;
     }
@@ -683,6 +669,21 @@ body {
         text-align: left; /* Para alinhar o texto dos itens à esquerda */
     }
 
+    /* Banner "Imagine" */
+    .imagine-banner {
+        min-height: 350px;
+    }
+    .imagine-banner-content {
+        padding: 0 1.5rem; 
+    }
+    .imagine-banner-content h2 {
+        font-size: 1.8rem;
+    }
+    .imagine-banner-content p {
+        font-size: 1.1rem;
+    }
+
+    /* CTA Final */
     .final-cta h2 {
         font-size: 2rem;
     }
@@ -693,7 +694,7 @@ body {
         padding: 1.5rem;
     }
 
-    /* WhatsApp Float Button (Mobile adjustments) */
+    /* Botão Flutuante WhatsApp */
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -702,6 +703,24 @@ body {
     }
     .whatsapp-float i {
         font-size: 1.6rem;
+    }
+}
+
+/* Mobile Pequeno - 480px e abaixo */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.25;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+    .imagine-banner-content h2 {
+        font-size: 1.5rem;
+    }
+    .imagine-banner-content p {
+        font-size: 1rem;
     }
 }
 
