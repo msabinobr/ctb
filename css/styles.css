@@ -476,6 +476,10 @@ body {
     margin: 0 auto;
 }
 
+.imagine-banner-content .cta-button {
+    margin-top: 2rem;
+}
+
 @media (max-width: 768px) {
     .imagine-banner {
         min-height: 180px;
