@@ -1,14 +1,43 @@
-/* Reset e Base Styles */
+/* Reset, Variáveis e Estilos Base */
+:root {
+    --primary-color: #4a7c59;
+    --primary-dark-color: #2c5530;
+    --accent-color: #25D366;
+    --accent-hover-color: #128C7E;
+
+    --text-dark: #333;
+    --text-light: #666;
+    --text-on-dark-bg: #ccc;
+    --text-on-primary-bg: #fff;
+
+    --bg-light: #f8f9fa;
+    --bg-dark: #1a1a1a;
+    --white: #fff;
+    --white-t-95: rgba(255, 255, 255, 0.95);
+    --black-t-40: rgba(0, 0, 0, 0.4);
+
+    --font-primary: 'Poppins', sans-serif;
+    --header-height: 92px; /* Aprox. 60px logo + 2rem padding */
+
+    --border-radius: 15px;
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-primary);
     line-height: 1.6;
-    color: #333;
+    color: var(--text-dark);
     overflow-x: hidden;
 }
 
@@ -24,11 +53,18 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: transparent;
     z-index: 1000;
-    padding: 1rem 0;
-    transition: all 0.3s ease;
+    padding: 1rem 0; /* 1rem = 16px. 16+16+50(logo) = 82px */
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Estilo do header quando a página é rolada (adicionar classe .scrolled via JS) */
+.header.scrolled {
+    background: var(--white-t-95);
+    -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-light);
 }
 
 .header .container {
@@ -37,9 +73,29 @@ body {
     align-items: center;
 }
 
-.logo img {
-    height: 50px;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espaço entre o emblema e o texto */
+}
+
+.logo .logo-emblem {
+    height: 60px;
     width: auto;
+    transition: filter 0.4s ease;
+    filter: brightness(0) invert(1) drop-shadow(1px 1px 2px rgba(0,0,0,0.6));
+}
+
+.logo .logo-text {
+    height: 30px; /* Altura ajustada para o texto para manter a proporção */
+    width: auto;
+    transition: filter 0.4s ease;
+    filter: brightness(0) invert(1) drop-shadow(1px 1px 2px rgba(0,0,0,0.6));
+}
+
+.header.scrolled .logo .logo-emblem,
+.header.scrolled .logo .logo-text {
+    filter: none;
 }
 
 .nav {
@@ -49,13 +105,24 @@ body {
 
 .nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--white);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
 }
 
-.nav a:hover {
-    color: #4a7c59;
+.nav a:hover, .nav a:focus-visible {
+    color: #ddd; /* Cor de hover mais clara para o estado transparente */
+}
+
+.header.scrolled .nav a {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+.header.scrolled .nav a:hover,
+.header.scrolled .nav a:focus-visible {
+    color: var(--primary-color);
 }
 
 .mobile-menu-toggle {
@@ -67,20 +134,27 @@ body {
 .mobile-menu-toggle span {
     width: 25px;
     height: 3px;
-    background: #333;
+    background: var(--white);
     margin: 3px 0;
-    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.header.scrolled .mobile-menu-toggle span {
+    background: var(--text-dark);
+    box-shadow: none;
 }
 
 /* Hero Section */
 .hero {
     position: relative;
-    height: 100vh;
+    min-height: 100vh; /* Fallback para navegadores mais antigos */
+    min-height: 100dvh; /* Altura dinâmica do viewport, melhor para mobile */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: var(--white);
     overflow: hidden;
 }
 
@@ -106,7 +180,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--black-t-40);
     z-index: -1;
 }
 
@@ -136,26 +210,21 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: #25D366;
-    color: white;
+    background: var(--accent-color);
+    color: var(--text-on-primary-bg);
     padding: 1rem 2rem;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 50px; /* Mantido pois é um estilo específico do botão */
     font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
-.cta-button:hover {
-    background: #128C7E;
-    transform: translateY(-2px);
+.cta-button:hover, .cta-button:focus-visible {
+    background: var(--accent-hover-color);
+    transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-.cta-button.large {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.2rem;
 }
 
 /* Sections */
@@ -163,15 +232,15 @@ body {
     font-size: 2.5rem;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 1rem;
-    color: #2c5530;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark-color);
 }
 
 .section-intro {
     font-size: 1.2rem;
     text-align: center;
-    margin-bottom: 3rem;
-    color: #666;
+    margin-bottom: 4rem;
+    color: var(--text-light);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -180,7 +249,7 @@ body {
 /* Solutions Section */
 .solutions {
     padding: 5rem 0;
-    background: #f8f9fa;
+    background: var(--bg-light);
 }
 
 .benefits-grid {
@@ -191,29 +260,29 @@ body {
 }
 
 .benefit-card {
-    background: white;
+    background: var(--white);
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .benefit-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-hover);
 }
 
 .benefit-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #4a7c59, #6b8e23);
+    background: linear-gradient(135deg, var(--primary-color), #6b8e23); /* Mantida a segunda cor por ser única */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem;
-    color: white;
+    color: var(--white);
     font-size: 2rem;
 }
 
@@ -221,14 +290,42 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #2c5530;
+    color: var(--primary-dark-color);
 }
 
 .benefit-card p {
-    color: #666;
+    color: var(--text-light);
     line-height: 1.6;
 }
 
+/* CTA button within the Solutions section */
+.solutions-cta {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* Animated Divider */
+.animated-divider {
+    background-color: var(--white); /* Cor da seção abaixo */
+    line-height: 0; /* Remove espaço extra */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animated-divider.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animated-divider svg {
+    display: block;
+    width: 100%;
+    height: 80px; /* Altura da onda */
+}
+.animated-divider .shape-fill {
+    fill: var(--bg-light); /* Cor da seção de cima */
+}
 /* Specialties Section */
 .specialties {
     padding: 5rem 0;
@@ -242,16 +339,16 @@ body {
 }
 
 .specialty-card {
-    background: white;
-    border-radius: 15px;
+    background: var(--white);
+    border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .specialty-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-hover);
 }
 
 .specialty-image {
@@ -278,18 +375,18 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #2c5530;
+    color: var(--primary-dark-color);
 }
 
 .specialty-content p {
-    color: #666;
+    color: var(--text-light);
     line-height: 1.6;
 }
 
 /* Consultoria Section */
 .consultoria {
     padding: 5rem 0;
-    background: #f8f9fa;
+    background: var(--bg-light);
 }
 
 .consultoria-content {
@@ -303,12 +400,12 @@ body {
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #2c5530;
+    color: var(--primary-dark-color);
 }
 
 .consultoria-text p {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--text-light);
     margin-bottom: 2rem;
     line-height: 1.6;
 }
@@ -322,16 +419,26 @@ body {
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--text-dark);
 }
 
 .consultoria-list i {
-    color: #4a7c59;
+    color: var(--primary-color);
     font-size: 1.2rem;
 }
 
+.consultoria-text .cta-button {
+    margin-top: 1.5rem; /* Adds space between the list and the button */
+    background-color: var(--primary-color); /* Differentiates from the main green CTA */
+    box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
+}
+
+.consultoria-text .cta-button:hover, .consultoria-text .cta-button:focus-visible {
+    background-color: var(--primary-dark-color);
+}
+
 .consultoria-image {
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -342,105 +449,66 @@ body {
     object-fit: cover;
 }
 
-/* Final CTA Section */
-.final-cta {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, #2c5530, #4a7c59);
-    color: white;
-    text-align: center;
-}
-
-.final-cta h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.final-cta p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* Footer */
 .footer {
-    background: #1a1a1a;
-    color: white;
+    background: var(--bg-dark);
+    color: var(--white);
     padding: 3rem 0 1rem;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2rem;
 }
 
 .footer-logo img {
-    height: 60px;
+    height: 105px; /* Aumentado em 25% (de 84px) */
     width: auto;
 }
-
-.footer-contact h3,
-.footer-social h3 {
-    margin-bottom: 1rem;
-    color: #4a7c59;
-}
-
-.footer-contact p {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    color: #ccc; /* Melhorar contraste */
-}
-.footer-contact p i, .footer-social .social-links a i {
-    color: #4a7c59; /* Manter cor do ícone */
-}
-
-.footer-social .social-links { /* Ajuste para centralizar se houver apenas um ícone */
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-start; /* Alinhamento padrão */
-}
-
-.social-links a {
-    display: inline-flex; /* Alterado para inline-flex */
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: #333; /* Fundo do ícone social */
-    color: white; /* Cor do ícone social */
-    border-radius: 50%;
-    text-decoration: none;
-    transition: background 0.3s ease;
-}
-
-.social-links a:hover {
-    background: #25D366; /* Hover para WhatsApp */
-}
-
-.social-links a i {
-    color: white; /* Cor do ícone interna */
-}
-
 
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--text-dark);
     color: #999;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav {
-        display: none; /* Será controlado pelo JS */
-        /* Estilos do menu mobile movidos para o JS para melhor controle */
+        /* Estilos do menu mobile para uma transição suave */
+        position: fixed;
+        top: var(--header-height); /* Alinha abaixo do header */
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: var(--shadow-light);
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+        z-index: 999;
+    }
+
+    .nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav a {
+        padding: 0.8rem 1rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+    .nav a:last-child {
+        border-bottom: none;
     }
     
     .mobile-menu-toggle {
@@ -468,17 +536,7 @@ body {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    .consultoria-image {
-        order: -1; /* Imagem primeiro no mobile na seção consultoria */
-    }
 
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .footer-social .social-links {
-        justify-content: center; /* Centralizar ícones sociais no mobile */
-    }
 }
 
 @media (max-width: 480px) {
@@ -504,17 +562,12 @@ body {
     }
 }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Animations (a serem controladas pelo JS com Intersection Observer) */
+/* Animações (controladas por JS com Intersection Observer) */
 .benefit-card,
 .specialty-card {
-    opacity: 0; /* Inicialmente invisível */
-    transform: translateY(30px); /* Deslocado para baixo */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transição suave */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .benefit-card.visible,
@@ -522,14 +575,65 @@ html {
     opacity: 1;
     transform: translateY(0);
 }
+/* Animação do ícone do menu mobile (classe .active adicionada via JS) */
+.mobile-menu-toggle.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* WhatsApp Float Button (Removido do CSS de referência, pois já existe um no HTML original) */
-/* Se precisar adicionar um botão flutuante de WhatsApp, pode ser feito aqui ou manter o do HTML original */
+/* Keyframe animation for the pulse effect */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    10% {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    20% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+}
 
-/* Estilos para o menu mobile ativo (serão adicionados via JS) */
-/*
-.nav.active { ... }
-.mobile-menu-toggle.active span:nth-child(1) { ... }
-.mobile-menu-toggle.active span:nth-child(2) { ... }
-.mobile-menu-toggle.active span:nth-child(3) { ... }
-*/
+/* WhatsApp Float Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1010;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: pulse 5s infinite ease-in-out;
+}
+
+.whatsapp-float i {
+    font-size: 2rem;
+}
+
+.whatsapp-float:hover, .whatsapp-float:focus-visible {
+    animation: none; /* Stop the animation on hover/focus */
+    background-color: var(--accent-hover-color);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .whatsapp-float i {
+        font-size: 1.6rem;
+    }
+}
