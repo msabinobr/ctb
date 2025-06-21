@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.seusite.com.br/sitemap.xml
+Sitemap: https://msabinobr.github.io/ctb/sitemap.xml
