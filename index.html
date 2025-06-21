@@ -1,203 +1,150 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conexão Terra Bambu - Bioconstrução Sustentável</title>
-<meta name="description" content="Construa o lar dos seus sonhos em harmonia com a natureza. Bioconstrução com bambu, taipa de mão e materiais naturais.">
-<link rel="stylesheet" href="css/styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="icon" href="assets/images/favicon.png" type="image/png">
-<!-- Estilos Adicionais para o Banner -->
-<style>
-    .imagine-banner-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 25px; /* Espaçamento entre título, texto e botão */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Página com Banner de Vídeo</title>
+
+    <!-- Adicione a tag de verificação do Google aqui -->
+    <meta name="google-site-verification" content="-vmKQa9FqoQDHeuLzrsiDXMDR-Uv7tpDoGmNuR1C_qg" />
+
+    <!-- 
+      ================================================================
+      SCRIPT DE METADADOS DO GOOGLE (JSON-LD)
+      Substitua os valores de exemplo pelos dados reais do seu vídeo.
+      ================================================================
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "O Título Exato do Seu Vídeo",
+      "description": "Uma descrição detalhada e relevante sobre o que é o vídeo. Use palavras-chave importantes aqui.",
+      "thumbnailUrl": [
+        "https://www.seusite.com.br/caminho/para/thumbnail-16x9.jpg",
+        "https://www.seusite.com.br/caminho/para/thumbnail-4x3.jpg",
+        "https://www.seusite.com.br/caminho/para/thumbnail-1x1.jpg"
+       ],
+      "uploadDate": "2023-10-27T08:00:00+00:00",
+      "duration": "PT1M33S",
+      "contentUrl": "https://www.seusite.com.br/caminho/para/seu-video.mp4",
+      "embedUrl": "https://www.seusite.com.br/player/embed/seu-video"
     }
-    @media (max-width: 768px) {
-        .imagine-banner { min-height: 60vh; } /* Aumenta a altura vertical no mobile */
-    }
-</style>
+    </script>
+
+    <!-- 
+      ================================================================
+      ESTILOS CSS PARA O BANNER
+      ================================================================
+    -->
+    <style>
+        html {
+            /* Melhora a experiência de rolagem para âncoras */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .video-banner {
+            position: relative; /* Essencial para posicionar os filhos sobre ele */
+            width: 100%;
+            height: 80vh; /* Defina a altura que desejar */
+            overflow: hidden; /* Garante que o vídeo não vaze do contêiner */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-banner__background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz o vídeo cobrir todo o espaço sem distorcer */
+            transform: translate(-50%, -50%);
+            z-index: 1; /* Coloca o vídeo na camada de trás */
+        }
+
+        .video-banner__overlay {
+            position: relative;
+            z-index: 2; /* Garante que esta camada fique na FRENTE do vídeo */
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45); /* Fundo escuro para legibilidade */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .video-banner__content {
+            max-width: 800px;
+        }
+
+        .video-banner__content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Fonte responsiva */
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .video-banner__content p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem); /* Fonte responsiva */
+            margin-bottom: 1.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Estilo do botão CTA */
+        .cta-button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #007bff; /* Cor de destaque */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3; /* Cor ao passar o mouse */
+            transform: translateY(-2px); /* Efeito de elevação */
+        }
+
+        /* Melhora a acessibilidade para navegação por teclado */
+        .cta-button:focus-visible {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-<!-- Header -->
-<header class="header">
-<div class="container">
-<div class="logo">
-<img src="assets/images/logo-minimal.png" alt="Emblema Conexão Terra Bambu" class="logo-emblem">
-<img src="assets/images/logo-texto.png" alt="Conexão Terra Bambu" class="logo-text">
-</div>
-<nav class="nav">
-<a href="#sobre">Sobre</a>
-<a href="#especialidades">Especialidades</a>
-<a href="#consultoria">Consultoria</a>
-</nav>
-<div class="mobile-menu-toggle">
-<span></span>
-<span></span>
-<span></span>
-</div>
-</div>
-</header>
 
-<!-- Hero Section -->
-<section class="hero">
-<div class="hero-background">
-<img src="assets/images/hero.webp" alt="Ambiente de bioconstrução com bambu">
-</div>
-<div class="hero-content">
-<div class="container">
-<h1 class="hero-title">A saúde do nosso corpo e da mente são reflexos diretos da saúde do nosso lar.</h1>
-<h2 class="hero-subtitle">Cansado do convencional, sonha com um ambiente único, saudável e em ressonância com a natureza? A Conexão Terra Bambu materializa seu projeto.</h2>
-<a href="https://wa.me/5511992908488" class="cta-button" target="_blank">
-<i class="fab fa-whatsapp"></i>
-QUERO CONSTRUIR
-</a>
-</div>
-</div>
-</section>
-
-<!-- Soluções Section -->
-<section id="sobre" class="solutions">
-<div class="container">
-<h2 class="section-title">Soluções Funcionais e Sustentáveis</h2>
-<p class="section-intro">Resgatamos a sabedoria construtiva ancestral e a integramos às inovações contemporâneas para criar edificações eficientes e de baixo impacto ambiental.</p>
-
-<div class="benefits-grid">
-<div class="benefit-card">
-<div class="benefit-icon">
-<i class="fas fa-leaf"></i>
-</div>
-<h3>Ambientes que Inspiram Bem-Estar</h3>
-<p>Crie espaços que promovem saúde, conforto térmico e uma conexão genuína com a natureza.</p>
-</div>
-
-<div class="benefit-card">
-<div class="benefit-icon">
-<i class="fas fa-chart-line"></i>
-</div>
-<h3>Valorização do Seu Imóvel</h3>
-<p>Um investimento inteligente em construções duráveis, ecológicas e com crescente apelo no mercado.</p>
-</div>
-
-<div class="benefit-card">
-<div class="benefit-icon">
-<i class="fas fa-palette"></i>
-</div>
-<h3>Design Único e Personalizado</h3>
-<p>Seu projeto com identidade própria, valorizando a estética natural dos materiais.</p>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- Faixa Imagine seu espaço ideal -->
-<section class="imagine-banner">
-<video class="imagine-bg-video" src="assets/videos/imagine.webm" autoplay loop muted playsinline></video>
-<div class="imagine-banner-content">
-<h2>Imagine seu espaço ideal. Nós construímos!</h2>
-<p>Seja uma casa aconchegante, um refúgio terapêutico ou um espaço comercial inovador, trazemos sua visão à vida com materiais naturais e design consciente.</p>
-<a href="https://wa.me/5511992908488?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20como%20construir%20meu%20espaço%20ideal." class="cta-button" target="_blank" rel="noopener noreferrer">FALE CONOSCO</a>
-</div>
-</section>
-
-<!-- Especialidades Section -->
-<section id="especialidades" class="specialties">
-<div class="container">
-<h2 class="section-title">Nossas Especialidades em Bioconstrução</h2>
-<p class="section-intro">Realize seu sonho de construir ou renovar com quem entende do assunto.</p>
-
-<div class="specialties-grid">
-<div class="specialty-card">
-<div class="specialty-image">
-<img src="assets/images/bambu.webp" alt="Estrutura de bambu em construção">
-</div>
-<div class="specialty-content">
-<h3>Bambu</h3>
-<p>Estruturas versáteis, resistentes e de beleza incomparável – de residências a galpões rurais até espaços comerciais, gourmet e terapêuticos.</p>
-</div>
-</div>
-
-<div class="specialty-card">
-<div class="specialty-image">
-<img src="assets/images/pau-a-pique.webp" alt="Construção com taipa de mão">
-</div>
-<div class="specialty-content">
-<h3>Taipa de Mão (Pau a Pique)</h3>
-<p>Tradição e eficiência para paredes com excelente conforto térmico e acústico.</p>
-</div>
-</div>
-
-<div class="specialty-card">
-<div class="specialty-image">
-<img src="assets/images/madeira.webp" alt="Interior com madeira de demolição">
-</div>
-<div class="specialty-content">
-<h3>Madeira de Demolição</h3>
-<p>Charme, história e sustentabilidade reutilizando materiais nobres.</p>
-</div>
-</div>
-
-<div class="specialty-card">
-<div class="specialty-image">
-<img src="assets/images/reboco-natural.webp" alt="Reboco natural em parede">
-</div>
-<div class="specialty-content">
-<h3>Rebocos Naturais</h3>
-<p>Acabamentos que deixam sua casa respirar, utilizando argamassas à base de terra, cal e outros agregados naturais.</p>
-</div>
-</div>
-
-<div class="specialty-card">
-<div class="specialty-image">
-<img src="assets/images/tinta.webp" alt="Parede com tinta de terra">
-</div>
-<div class="specialty-content">
-<h3>Tinta de Terra</h3>
-<p>Cores e texturas autênticas da natureza para seus ambientes, sem componentes tóxicos.</p>
-</div>
-</div>
-</div>
-
-<!-- Consultoria Content (Moved) -->
-<div id="consultoria" class="consultoria-content">
-<div class="consultoria-text">
-<h2>Consultoria Especializada</h2>
-<p>Orientação completa para viabilizar sua obra, do planejamento à capacitação de mão de obra e execução.</p>
-<ul class="consultoria-list">
-<li><i class="fas fa-check"></i> Planejamento e viabilidade técnica</li>
-<li><i class="fas fa-check"></i> Capacitação de equipe</li>
-<li><i class="fas fa-check"></i> Acompanhamento da execução</li>
-<li><i class="fas fa-check"></i> Suporte técnico especializado</li>
-</ul>
-<a href="https://wa.me/5511992908488?text=Olá!%20Gostaria%20de%20agendar%20uma%20consultoria." class="cta-button" target="_blank" rel="noopener noreferrer">
-AGENDE UMA CONSULTORIA
-</a>
-</div>
-<div class="consultoria-image">
-<img src="assets/images/ambiente.webp" alt="Ambiente de consultoria em bioconstrução">
-</div>
-</div>
-</div>
-</section>
-
-<!-- Final CTA Section -->
-<section class="final-cta">
-<div class="container">
-<div class="cta-box">
-<h3>Pronto para Construir com Consciência e Originalidade?</h3>
-<p class="cta-subtext">Na Conexão Terra Bambu, estamos prontos para transformar sua visão em uma realidade construída com respeito pela terra e foco nos seus desejos. Entre em contato hoje mesmo!</p>
-<a href="https://wa.me/5511992908488?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." class="cta-button" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-whatsapp"></i>
-Solicite um Orçamento
-</a>
-</div>
-</div>
-</section>
+    <section class="video-banner" aria-label="Banner principal com vídeo de fundo">
+      <!-- SUBSTITUA os caminhos do vídeo e da imagem poster -->
+      <!-- O atributo loading="lazy" otimiza o carregamento da página -->
+      <video class="video-banner__background" autoplay muted loop playsinline poster="/caminho/para/imagem-de-espera.jpg" loading="lazy">
+        <!-- O navegador escolherá o formato que suporta, priorizando WebM por ser mais leve -->
+        <source src="/caminho/para/seu-video.webm" type="video/webm">
+        <source src="/caminho/para/seu-video.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo. Considere <a href="/caminho/para/seu-video.mp4">baixar o vídeo</a> para assisti-lo.
+      </video>
+    
+      <div class="video-banner__overlay">
+        <div class="video-banner__content">
+          <h1>Título Principal Sobre o Vídeo</h1>
+          <p>Uma descrição curta e impactante para convencer o usuário.</p>
+          <!-- SUBSTITUA o link e o texto do CTA -->
+          <a href="/sua-pagina-de-destino" class="cta-button">Saiba Mais Agora</a>
+        </div>
+      </div>
+    </section>
 
 <!-- Footer -->
 <footer class="footer">
