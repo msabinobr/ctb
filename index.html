@@ -20,8 +20,19 @@
 <meta name="twitter:description" content="Construa o lar dos seus sonhos em harmonia com a natureza. Bioconstrução com bambu, taipa de mão e materiais naturais.">
 <meta name="twitter:image" content="https://msabinobr.github.io/ctb/assets/images/social-share.jpg">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- Otimização de Performance: Carregamento assíncrono de fontes e ícones -->
+<!-- 1. Preconnect para os servidores de fontes para acelerar o handshake -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- 2. Carrega o CSS das fontes e dos ícones de forma não-bloqueante -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<!-- 3. Fallback para caso o JavaScript esteja desabilitado -->
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+
 <link rel="icon" href="assets/images/favicon.png" type="image/png">
 </head>
 <body>
