@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (mobileMenuToggle && nav) { // Verifica se os elementos existem
         mobileMenuToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
+            const isActive = nav.classList.toggle('active');
             this.classList.toggle('active');
+            this.setAttribute('aria-expanded', isActive);
         });
     }
 
@@ -94,12 +95,14 @@ document.addEventListener('DOMContentLoaded', function() {
     whatsappButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Track WhatsApp click event
-            console.log('WhatsApp button clicked: ' + this.href);
+            // console.log('WhatsApp button clicked: ' + this.href); // Removido console.log de produção
             // You can add analytics tracking here, e.g., gtag('event', 'click', {'event_category': 'WhatsApp', 'event_label': this.href});
         });
     });
 
-    // Lazy loading for images (se data-src for usado - não está no HTML atual, mas mantido para futuras implementações)
+    // O código de Lazy loading para imagens foi removido pois não está sendo utilizado no HTML atual.
+    // Se for necessário no futuro, pode ser reintroduzido.
+    /*
     const lazyImages = document.querySelectorAll('img[data-src]');
     if (lazyImages.length > 0) {
         const imageObserver = new IntersectionObserver(function(entries, imgObserver) {
@@ -107,12 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (entry.isIntersecting) {
                     const img = entry.target;
                     img.src = img.dataset.src;
-                    img.removeAttribute('data-src'); // Remove para não reprocessar
-                    img.classList.remove('lazy'); // Se houver classe lazy
+                    img.removeAttribute('data-src');
+                    img.classList.remove('lazy');
                     imgObserver.unobserve(img);
                 }
             });
         });
         lazyImages.forEach(img => imageObserver.observe(img));
     }
+    */
 });

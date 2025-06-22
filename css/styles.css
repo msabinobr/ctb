@@ -159,6 +159,15 @@ body {
     box-shadow: none;
 }
 
+.mobile-menu-toggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.header.scrolled .mobile-menu-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -226,8 +235,8 @@ body {
     align-items: center;
     gap: 0.5rem;
     background: var(--accent-color);
-    color: var(--text-on-primary-bg); /* Alterado para branco, conforme solicitado */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); /* Sombra sutil para melhorar a legibilidade do branco no verde */
+    color: var(--text-dark); /* Alterado para --text-dark para melhor contraste com --accent-color */
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); /* Removido pois o texto agora é escuro */
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 50px; /* Mantido pois é um estilo específico do botão */
@@ -301,7 +310,7 @@ body {
 .benefit-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--primary-color), #6b8e23); /* Mantida a segunda cor por ser única */
+    background: linear-gradient(135deg, var(--primary-color), #6b8e23);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -387,7 +396,7 @@ body {
 /* Consultoria Section */
 .consultoria-content {
     display: grid;
-    margin-top: 5rem; /* Espaçamento do grid de especialidades acima */
+    /* margin-top: 5rem; /* Removido pois a seção #consultoria agora tem seu próprio padding via classe .specialties */
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
@@ -531,6 +540,7 @@ body {
     padding: 3rem 0 1rem;
 }
 
+/*
 .footer-content {
     display: flex;
     justify-content: center;
@@ -539,9 +549,10 @@ body {
 }
 
 .footer-logo img {
-    height: 105px; /* Aumentado em 25% (de 84px) */
+    height: 105px;
     width: auto;
 }
+*/
 
 .footer-bottom {
     text-align: center;

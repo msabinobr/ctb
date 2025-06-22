@@ -14,7 +14,6 @@ A página foi projetada para ser uma ferramenta de marketing digital direta e ef
 
 -   **Design Responsivo:** A página se adapta a diferentes tamanhos de tela, como desktops, tablets e celulares.
 -   **Animações de Scroll:** Elementos surgem suavemente na tela conforme o usuário rola a página, criando uma experiência de navegação mais dinâmica.
--   **FAQ Interativo:** Uma seção de perguntas frequentes (FAQ) com um acordeão (accordion) para mostrar e esconder as respostas.
 -   **Botão Flutuante do WhatsApp:** Um botão de contato sempre visível para facilitar a comunicação instantânea.
 
 ## 🛠️ Tecnologias Utilizadas
@@ -25,8 +24,14 @@ A página foi projetada para ser uma ferramenta de marketing digital direta e ef
 
 ## 🚀 Como Executar
 
-1.  Clone este repositório para sua máquina local.
-2.  Crie um arquivo `index.html` com o conteúdo da página.
+1.  Clone este repositório para sua máquina local:
+    ```bash
+    git clone https://github.com/MSabinoBR/ctb.git
+    ```
+2.  Navegue até o diretório do projeto:
+    ```bash
+    cd ctb
+    ```
 3.  Abra o arquivo `index.html` em seu navegador de preferência.
 
 ---

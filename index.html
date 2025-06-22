@@ -10,7 +10,7 @@
 <!-- Meta Tags para Compartilhamento (Open Graph e Twitter) -->
 <meta property="og:title" content="Conexão Terra Bambu - Bioconstrução Sustentável">
 <meta property="og:description" content="Construa o lar dos seus sonhos em harmonia com a natureza. Bioconstrução com bambu, taipa de mão e materiais naturais.">
-<meta property="og:image" content="https://msabinobr.github.io/ctb/assets/images/social-share.jpg">
+<meta property="og:image" content="https://msabinobr.github.io/ctb/assets/images/img-compartilhamento.webp">
 <meta property="og:url" content="https://msabinobr.github.io/ctb/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Conexão Terra Bambu">
@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Conexão Terra Bambu - Bioconstrução Sustentável">
 <meta name="twitter:description" content="Construa o lar dos seus sonhos em harmonia com a natureza. Bioconstrução com bambu, taipa de mão e materiais naturais.">
-<meta name="twitter:image" content="https://msabinobr.github.io/ctb/assets/images/social-share.jpg">
+<meta name="twitter:image" content="https://msabinobr.github.io/ctb/assets/images/img-compartilhamento.webp">
 
 <!-- Otimização de Performance: Carregamento assíncrono de fontes e ícones -->
 <!-- 1. Preconnect para os servidores de fontes para acelerar o handshake -->
@@ -43,16 +43,16 @@
 <img src="assets/images/logo-minimal.webp" alt="Emblema Conexão Terra Bambu" class="logo-emblem">
 <img src="assets/images/logo-texto.webp" alt="Conexão Terra Bambu" class="logo-text">
 </div>
-<nav class="nav">
+<nav class="nav" id="main-nav">
 <a href="#sobre">Sobre</a>
 <a href="#especialidades">Especialidades</a>
 <a href="#consultoria">Consultoria</a>
 </nav>
-<div class="mobile-menu-toggle">
-<span></span>
-<span></span>
-<span></span>
-</div>
+<button type="button" class="mobile-menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false" aria-controls="main-nav">
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+</button>
 </div>
 </header>
 
@@ -66,7 +66,7 @@
 <h1 class="hero-title">A saúde do nosso corpo e da mente são reflexos diretos da saúde do nosso&nbsp;lar.</h1>
 <p class="hero-subtitle">Cansado do convencional, sonha com um ambiente único, saudável e em ressonância com a natureza? A Conexão Terra Bambu materializa seu projeto.</p>
 <a href="https://wa.me/5511992908488?text=Olá!%20Vi%20o%20site%20de%20vocês%20e%20me%20conectei%20com%20a%20ideia%20de%20que%20a%20saúde%20do%20nosso%20lar%20reflete%20em%20nossa%20saúde.%20Gostaria%20de%20saber%20mais%20sobre%20como%20materializar%20meu%20projeto." class="cta-button" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-whatsapp"></i>
+<i class="fab fa-whatsapp" aria-hidden="true"></i>
 QUERO CONSTRUIR
 </a>
 </div>
@@ -82,7 +82,7 @@ QUERO CONSTRUIR
 <div class="benefits-grid">
 <div class="benefit-card">
 <div class="benefit-icon">
-<i class="fas fa-leaf"></i>
+<i class="fas fa-leaf" aria-hidden="true"></i>
 </div>
 <h3>Ambientes que Inspiram Bem-Estar</h3>
 <p>Crie espaços que promovem saúde, conforto térmico e uma conexão genuína com a natureza.</p>
@@ -90,7 +90,7 @@ QUERO CONSTRUIR
 
 <div class="benefit-card">
 <div class="benefit-icon">
-<i class="fas fa-chart-line"></i>
+<i class="fas fa-chart-line" aria-hidden="true"></i>
 </div>
 <h3>Valorização do Seu Imóvel</h3>
 <p>Um investimento inteligente em construções duráveis, ecológicas e com crescente apelo no mercado.</p>
@@ -98,7 +98,7 @@ QUERO CONSTRUIR
 
 <div class="benefit-card">
 <div class="benefit-icon">
-<i class="fas fa-palette"></i>
+<i class="fas fa-palette" aria-hidden="true"></i>
 </div>
 <h3>Design Único e Personalizado</h3>
 <p>Seu projeto com identidade própria, valorizando a estética natural dos materiais.</p>
@@ -175,27 +175,33 @@ QUERO CONSTRUIR
 </div>
 </div>
 </div>
+<!-- O div .container da seção #especialidades fecha aqui -->
+</div>
+</section> <!-- Fechamento da section#especialidades -->
 
-<!-- Consultoria Content (Moved) -->
-<div id="consultoria" class="consultoria-content">
-<div class="consultoria-text">
-<h2>Consultoria Especializada</h2>
-<p>Orientação completa para viabilizar sua obra, do planejamento à capacitação de mão de obra e execução.</p>
-<ul class="consultoria-list">
-<li><i class="fas fa-check"></i> Planejamento e viabilidade técnica</li>
-<li><i class="fas fa-check"></i> Capacitação de equipe</li>
-<li><i class="fas fa-check"></i> Acompanhamento da execução</li>
-<li><i class="fas fa-check"></i> Suporte técnico especializado</li>
-</ul>
-<a href="https://wa.me/5511992908488?text=Olá!%20Tenho%20interesse%20na%20consultoria%20especializada.%20Gostaria%20de%20entender%20como%20podemos%20viabilizar%20meu%20projeto%20de%20bioconstrução." class="cta-button" target="_blank" rel="noopener noreferrer">
-AGENDE UMA CONSULTORIA
-</a>
-</div>
-<div class="consultoria-image">
-<img src="assets/images/ambiente.webp" alt="Ambiente de consultoria em bioconstrução">
-</div>
-</div>
-</div>
+<!-- Consultoria Section -->
+<section id="consultoria" class="specialties"> <!-- Mantendo a classe .specialties para herdar paddings, ou criar uma nova se necessário -->
+    <div class="container">
+        <!-- <h2 class="section-title">Consultoria Especializada</h2>  Movido para dentro do consultoria-text e mantido como H2 -->
+        <div class="consultoria-content"> <!-- Removido o ID "consultoria" daqui pois já está no <section> -->
+            <div class="consultoria-text">
+                <h2>Consultoria Especializada</h2> <!-- Título da seção, alinhado com o design de outros títulos de seção -->
+                <p>Orientação completa para viabilizar sua obra, do planejamento à capacitação de mão de obra e execução.</p>
+                <ul class="consultoria-list">
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Planejamento e viabilidade técnica</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Capacitação de equipe</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Acompanhamento da execução</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Suporte técnico especializado</li>
+                </ul>
+                <a href="https://wa.me/5511992908488?text=Olá!%20Tenho%20interesse%20na%20consultoria%20especializada.%20Gostaria%20de%20entender%20como%20podemos%20viabilizar%20meu%20projeto%20de%20bioconstrução." class="cta-button" target="_blank" rel="noopener noreferrer">
+                    AGENDE UMA CONSULTORIA
+                </a>
+            </div>
+            <div class="consultoria-image">
+                <img src="assets/images/ambiente.webp" alt="Ambiente de consultoria em bioconstrução">
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Final CTA Section -->
@@ -205,7 +211,7 @@ AGENDE UMA CONSULTORIA
 <h3>Pronto para Construir com Consciência e Originalidade?</h3>
 <p class="cta-subtext">Na Conexão Terra Bambu, estamos prontos para transformar sua visão em uma realidade construída com respeito pela terra e foco nos seus desejos. Entre em contato hoje mesmo!</p>
 <a href="https://wa.me/5511992908488?text=Olá!%20Estou%20pronto(a)%20para%20construir%20com%20mais%20consciência%20e%20originalidade.%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20projeto." class="cta-button" target="_blank" rel="noopener noreferrer">
-<i class="fab fa-whatsapp"></i>
+<i class="fab fa-whatsapp" aria-hidden="true"></i>
 Solicite um Orçamento
 </a>
 </div>
